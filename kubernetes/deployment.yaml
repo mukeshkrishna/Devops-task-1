@@ -23,10 +23,10 @@ spec:
           imagePullPolicy: Always
           ports:
             - containerPort: 8090
-      livenessProbe:
-        httpGet:
-          path: /health-check
-          port: 8090
-        initialDelaySeconds: 3
-        periodSeconds: 3
-        failureThreshold: 2
+          livenessProbe:
+            httpGet:
+              path: /health-check
+              port: 8090
+            initialDelaySeconds: 3 # Tells kublet to wait for 3 seconds before preforming the first liveness check
+            periodSeconds: 3 #Every 3 seconds the kublet need to perform liveness check
+            failureThreshold: 2
